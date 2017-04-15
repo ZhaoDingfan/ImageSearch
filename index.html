@@ -26,7 +26,7 @@ input.uploadImage {
     <!-- <input type="file" ng-model="imageFile"> -->
     <input type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
     <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="200px">
-    <div><a href="#searchResult"><button ng-click="myFunc()">Search</button></a></div>
+    <div style="display: block;"><a href="#searchResult"><button ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
     <!-- <button ng-click="myFunc()">Search</button> -->
   </form>
   <!-- <div ng-show="hidden">You have clicked the Search button!</div> -->
@@ -75,7 +75,7 @@ app.config(['$routeProvider', function($routeProvider) {
     })
     .when("/searchResult", {
         // templateUrl : "result.html"
-        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table>"
+        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\">Back</a></button></div>"
     });
 }]);
 

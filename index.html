@@ -31,9 +31,10 @@ input.uploadImage {
   </form>
   <!-- <div ng-show="hidden">You have clicked the Search button!</div> -->
   
+  <div ng-view></div>
 </div>
 
-<div ng-view></div>
+
 
 
 <script>
@@ -75,7 +76,7 @@ app.config(['$routeProvider', function($routeProvider) {
     })
     .when("/searchResult", {
         // templateUrl : "result.html"
-        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\">Back</a></button></div>"
+        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\" ng-click=\"myFunc()\">Back</a></button></div>"
     });
 }]);
 

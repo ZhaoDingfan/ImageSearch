@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select similar image</title>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body ng-app="searchImage">
+
+<div  ng-controller="myCtrl">
+  <form>
+    <input type="file" ng-model="imageFile">
+    <img src="timg.jpeg" alt="Japanese Cartoon" height="200px" width="200px">
+    <div><input type="submit" ng-click="myFunc()" value="Search"></div>
+  </form>
+  <div ng-show="hidden">You have clicked the submit button!</div>
+</div>
+
+<script>
+var app = angular.module("searchImage", []); 
+app.controller("myCtrl", function($scope) {
+  $scope.hidden = false;
+  $scope.myFunc = function() {
+    $scope.hidden = true; 
+  }
+});
+</script>
+
+</body>
+</html>

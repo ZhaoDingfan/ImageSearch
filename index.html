@@ -24,9 +24,9 @@ input.uploadImage {
   <form>
   <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
     <!-- <input type="file" ng-model="imageFile"> -->
-    <input type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*">
+    <input type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
     <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="200px">
-    <div><a href="#searchResult">Search</a></div>
+    <div><a href="#searchResult"><button ng-click="myFunc()">Search</button></a></div>
     <!-- <button ng-click="myFunc()">Search</button> -->
   </form>
   <!-- <div ng-show="hidden">You have clicked the Search button!</div> -->
@@ -34,8 +34,6 @@ input.uploadImage {
 </div>
 
 <div ng-view></div>
-<!-- <img ng-src="{{imgArray[0]}}" height="200px" width="200px">
-<img ng-src="{{imgArray[]}}" height="200px" width="200px"> -->
 
 
 <script>
@@ -51,16 +49,12 @@ app.controller("myCtrl", function($scope) {
     "kid3.jpg",
     "kid4.jpg",
     "kid5.jpeg",
-    "kid6.jpg",
+    "kid6.jpg"
   ];
-
-  // $scope.imgArray[0] = new Image();
-  // $scope.imgArray[0] = "timg.jpeg";
-  // $scope.imgArray[1] = "timg.jpeg";
-  // $scope.hidden = false;
-  // $scope.myFunc = function() {
-  //   $scope.hidden = !$scope.hidden; 
-  // }
+  $scope.hidden = false;
+  $scope.myFunc = function() {
+    $scope.hidden = !$scope.hidden; 
+  }
 
   $scope.file_changed = function(element) {
     var photofile = element.files[0];
@@ -81,7 +75,7 @@ app.config(['$routeProvider', function($routeProvider) {
     })
     .when("/searchResult", {
         // templateUrl : "result.html"
-        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"200px\"></td></tr></table>"
+        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table>"
     });
 }]);
 

@@ -34,6 +34,8 @@ input.uploadImage {
 </div>
 
 <div ng-view></div>
+<!-- <img ng-src="{{imgArray[0]}}" height="200px" width="200px">
+<img ng-src="{{imgArray[]}}" height="200px" width="200px"> -->
 
 
 <script>
@@ -49,7 +51,7 @@ app.controller("myCtrl", function($scope) {
     "kid3.jpg",
     "kid4.jpg",
     "kid5.jpeg",
-    "kid6.jpg"
+    "kid6.jpg",
   ];
 
   // $scope.imgArray[0] = new Image();
@@ -79,7 +81,7 @@ app.config(['$routeProvider', function($routeProvider) {
     })
     .when("/searchResult", {
         // templateUrl : "result.html"
-        template : "<h1>haha</h1>"
+        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"200px\"></td></tr></table>"
     });
 }]);
 

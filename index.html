@@ -8,7 +8,9 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-
+input.uploadImage {
+  display: block;
+}
 </style>
 
 </head>
@@ -16,19 +18,22 @@
 
 <div  ng-controller="myCtrl">
   <form>
-    <input type="file" ng-model="imageFile">
-    <img src="timg.jpeg" alt="Japanese Cartoon" height="200px" width="200px">
-    <div><input type="submit" ng-click="myFunc()" value="Search"></div>
+  <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
+    <!-- <input type="file" ng-model="imageFile"> -->
+    <input type="file" class="uploadImage" ng-model="image">
+    <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="200px">
+    <div><button ng-click="myFunc()">Search</button></div>
   </form>
-  <div ng-show="hidden">You have clicked the submit button!</div>
+  <div ng-show="hidden">You have clicked the Search button!</div>
 </div>
 
 <script>
 var app = angular.module("searchImage", []); 
 app.controller("myCtrl", function($scope) {
+  $scope.image = 'timg.jpeg';
   $scope.hidden = false;
   $scope.myFunc = function() {
-    $scope.hidden = true; 
+    $scope.hidden = !$scope.hidden; 
   }
 });
 </script>

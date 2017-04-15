@@ -35,11 +35,26 @@ input.uploadImage {
 
 <div ng-view></div>
 
+
 <script>
 var app = angular.module("searchImage", ["ngRoute"]); 
 
 app.controller("myCtrl", function($scope) {
   $scope.image = 'timg.jpeg';
+  $scope.imgArray = new Array();
+
+  $scope.imgArray = [
+    "kid1.jpg",
+    "kid2.jpg",
+    "kid3.jpg",
+    "kid4.jpg",
+    "kid5.jpeg",
+    "kid6.jpg"
+  ];
+
+  // $scope.imgArray[0] = new Image();
+  // $scope.imgArray[0] = "timg.jpeg";
+  // $scope.imgArray[1] = "timg.jpeg";
   // $scope.hidden = false;
   // $scope.myFunc = function() {
   //   $scope.hidden = !$scope.hidden; 
@@ -63,8 +78,8 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : ""
     })
     .when("/searchResult", {
-        templateUrl : "result.html"
-        // template : "<h1>haha</h1>"
+        // templateUrl : "result.html"
+        template : "<h1>haha</h1>"
     });
 }]);
 

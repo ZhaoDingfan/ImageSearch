@@ -24,7 +24,7 @@ input.uploadImage {
   <form>
   <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
     <!-- <input type="file" ng-model="imageFile"> -->
-    <input style="text-align: center;" type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
+    <input style="margin: 0 auto;" type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
     <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="200px">
     <div style="display: block;"><a href="#searchResult"><button ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
     <!-- <button ng-click="myFunc()">Search</button> -->
@@ -75,10 +75,25 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : "home.html"
     })
     .when("/searchResult", {
-        templateUrl : "result.html"
+        templateUrl : "result.html",
+        controller : "resultCtrl"
         // template : "<table style=\"align: center;\"><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td ><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\" ng-click=\"myFunc()\">Back</a></button></div>"
     });
 }]);
+
+app.controller("resultCtrl", function($scope) {
+  $scope.msg = "hello everyone";
+  $scope.imgArray = new Array();
+
+  $scope.imgArray = [
+    "kid1.jpg",
+    "kid2.jpg",
+    "kid3.jpg",
+    "kid4.jpg",
+    "kid5.jpeg",
+    "kid6.jpg"
+  ];
+})
 
 </script>
 

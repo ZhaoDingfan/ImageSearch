@@ -77,7 +77,6 @@ app.config(['$routeProvider', function($routeProvider) {
     .when("/searchResult", {
         templateUrl : "result.html",
         controller : "resultCtrl"
-        // template : "<table style=\"align: center;\"><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td ><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\" ng-click=\"myFunc()\">Back</a></button></div>"
     });
 }]);
 
@@ -86,12 +85,18 @@ app.controller("resultCtrl", function($scope) {
   $scope.imgArray = new Array();
 
   $scope.imgArray = [
-    "kid1.jpg",
-    "kid2.jpg",
-    "kid3.jpg",
-    "kid4.jpg",
-    "kid5.jpeg",
-    "kid6.jpg"
+    {
+      first : "kid1.jpg",
+      second : "kid2.jpg"
+    },
+    {
+      first : "kid3.jpg",
+      second : "kid4.jpg"
+    },
+    {
+      first : "kid5.jpeg",
+      second : "kid6.jpg"
+    }
   ];
 })
 

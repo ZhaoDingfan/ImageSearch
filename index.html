@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -37,15 +38,69 @@ input.uploadImage {
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
+
+.toggle {
+    -webkit-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+    -webkit-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* easeOutQuad */
+}
+
+.toggle.ng-enter {
+    opacity: 0;
+    transition-duration: 1000ms;
+    -webkit-transition-duration: 1000ms;
+}
+
+.toggle.ng-enter-active {
+    opacity: 1;
+}
+
+.toggle.ng-leave {
+    opacity: 1;
+    transition-duration: 1000ms;
+    -webkit-transition-duration: 1000ms;
+}
+
+.toggle.ng-leave-active {
+    opacity: 0;
+}
+
+.toggle.ng-hide-add {
+    transition-duration: 1000ms;
+    -webkit-transition-duration: 1000ms;
+    opacity: 1;
+}
+
+.toggle.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+
+.toggle.ng-hide-remove {
+    transition-duration: 1000ms;
+    -webkit-transition-duration: 1000ms;
+    display: block !important;
+    opacity: 0;
+}
+
+.toggle.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
 </style>
 
 </head>
-<body ng-app="searchImage" ng-controller="myCtrl">
+<body ng-app="searchImage" ng-controller="myCtrl" background="background.jpg">
 
 <div style="text-align: center;" class="container">
   <form>
-  <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
-    <!-- <input type="file" ng-model="imageFile"> -->
     <label for="image-upload" class="custom-image-upload" style="display: block;">
     Select Image
     </label>
@@ -53,18 +108,16 @@ input.uploadImage {
     <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="300px">
     <div ng-show="!hidden" style="margin: 5px 0px 20px 0px;">This is the preview of initial image, you can upload your own image</div>
     <div style="display: block;"><a href="#searchResult"><button type="button" class="btn btn-success" ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
-    <!-- <button ng-click="myFunc()">Search</button> -->
   </form>
-  <!-- <div ng-show="hidden">You have clicked the Search button!</div> -->
   
-  <div ng-view></div>
+  <div ng-view class="toggle"></div>
 </div>
 
 
 
 
 <script>
-var app = angular.module("searchImage", ["ngRoute"]); 
+var app = angular.module("searchImage", ["ngRoute", "ngAnimate"]); 
 
 app.controller("myCtrl", function($scope) {
   $scope.image = 'timg.jpeg';

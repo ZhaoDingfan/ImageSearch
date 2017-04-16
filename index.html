@@ -15,6 +15,15 @@
 input.uploadImage {
   display: none;
 }
+
+.custom-image-upload {
+  width: 300px;
+  border: 1px solid #ccc;
+  display: block;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+}
 </style>
 
 </head>
@@ -24,11 +33,11 @@ input.uploadImage {
   <form>
   <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
     <!-- <input type="file" ng-model="imageFile"> -->
-    <label for="file-upload" class="custom-file-upload" style="display: block;">
-    Custom Upload
+    <label for="image-upload" class="custom-image-upload" style="display: block;">
+    Select Image
     </label>
-    <input id="file-upload" style="margin: 0 auto;" type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
-    <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="200px">
+    <input id="image-upload" style="margin: 0 auto;" type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
+    <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="300px">
     <div ng-show="!hidden">This is the preview of initial image, you can upload your own image</div>
     <div style="display: block;"><a href="#searchResult"><button ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
     <!-- <button ng-click="myFunc()">Search</button> -->
@@ -46,16 +55,6 @@ var app = angular.module("searchImage", ["ngRoute"]);
 
 app.controller("myCtrl", function($scope) {
   $scope.image = 'timg.jpeg';
-  $scope.imgArray = new Array();
-
-  $scope.imgArray = [
-    "kid1.jpg",
-    "kid2.jpg",
-    "kid3.jpg",
-    "kid4.jpg",
-    "kid5.jpeg",
-    "kid6.jpg"
-  ];
   $scope.hidden = false;
   $scope.myFunc = function() {
     $scope.hidden = !$scope.hidden; 

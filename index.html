@@ -23,13 +23,26 @@ input.uploadImage {
   padding: 6px 12px;
   cursor: pointer;
   margin: 0 auto 0 auto;
+  background-color: lightblue;
+}
+
+.colorgraph {
+  width: 70%;
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
 </style>
 
 </head>
 <body ng-app="searchImage" ng-controller="myCtrl">
 
-<div style="text-align: center;">
+<div style="text-align: center;" class="container">
   <form>
   <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
     <!-- <input type="file" ng-model="imageFile"> -->
@@ -38,8 +51,8 @@ input.uploadImage {
     </label>
     <input id="image-upload" style="margin: 0 auto;" type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
     <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="300px">
-    <div ng-show="!hidden">This is the preview of initial image, you can upload your own image</div>
-    <div style="display: block;"><a href="#searchResult"><button ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
+    <div ng-show="!hidden" style="margin: 5px 0px 20px 0px;">This is the preview of initial image, you can upload your own image</div>
+    <div style="display: block;"><a href="#searchResult"><button type="button" class="btn btn-success" ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
     <!-- <button ng-click="myFunc()">Search</button> -->
   </form>
   <!-- <div ng-show="hidden">You have clicked the Search button!</div> -->

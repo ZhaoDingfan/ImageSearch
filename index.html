@@ -20,11 +20,11 @@ input.uploadImage {
 </head>
 <body ng-app="searchImage" ng-controller="myCtrl">
 
-<div >
+<div style="text-align: center;">
   <form>
   <!-- I don't know how to change the style of the default image uploading button, so I use a faked one -->
     <!-- <input type="file" ng-model="imageFile"> -->
-    <input type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
+    <input style="text-align: center;" type="file" class="uploadImage" ng-model="image" onchange="angular.element(this).scope().file_changed(this)" accept="image/*" ng-show="!hidden">
     <img ng-src="{{image}}" alt="Japanese Cartoon" height="200px" width="200px">
     <div style="display: block;"><a href="#searchResult"><button ng-show="!hidden" ng-click="myFunc()">Search</button></a></div>
     <!-- <button ng-click="myFunc()">Search</button> -->
@@ -72,11 +72,11 @@ app.controller("myCtrl", function($scope) {
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : ""
+        templateUrl : "home.html"
     })
     .when("/searchResult", {
-        // templateUrl : "result.html"
-        template : "<table><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\" ng-click=\"myFunc()\">Back</a></button></div>"
+        templateUrl : "result.html"
+        // template : "<table style=\"align: center;\"><caption>Searching Result about this image</caption><tr ng-repeat=\"x in imgArray\"><td ><img ng-src=\"{{x}}\" height=\"200px\" width=\"300px\"></td></tr></table><div><button><a href=\"index.html\" ng-click=\"myFunc()\">Back</a></button></div>"
     });
 }]);
 

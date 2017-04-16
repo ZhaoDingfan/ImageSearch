@@ -1,1 +1,16 @@
-<div><h1>haha</h1></div>
+<div><h1>{{msg}}</h1></div>
+
+<div style="margin: 20px 20px 20px 20px; text-align: center;">
+<table style="margin: 0 auto 0 auto">
+<caption>Searching Result about this image</caption>
+<tr ng-repeat="x in imgArray">
+<td ><img ng-src="{{x}}" height="200px" width="300px"></td>
+</tr>
+</table>
+
+<div>
+<button>
+<a href="index.html" ng-click="myFunc()">Back</a>
+</button>
+</div>
+</div>
